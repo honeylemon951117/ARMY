@@ -1,0 +1,6 @@
+{
+  "name": "哥特亞文化飾品館",
+  "description": "亞文化哥特飾品販售與品牌展示網站，包含完善的暗黑美學商品瀏覽、購物車、會員收藏、積分折抵、優惠券以及後端上架商品管理系統。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

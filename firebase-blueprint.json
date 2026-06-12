@@ -1,0 +1,92 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Store gothic guild customer accounts and coven points",
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "description": "User visible nickname"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Gothic communion email"
+        },
+        "role": {
+          "type": "string",
+          "enum": ["customer", "admin"],
+          "description": "Guild roles"
+        },
+        "points": {
+          "type": "integer",
+          "description": "Accrued black covenant points"
+        },
+        "level": {
+          "type": "string",
+          "description": "Member rank badge in the coven"
+        }
+      },
+      "required": ["username", "email", "role", "points", "level"]
+    },
+    "Invoice": {
+      "title": "Gothic Invoice Relic",
+      "description": "Transaction details and dark invoice documents for jewelry delivery",
+      "type": "object",
+      "properties": {
+        "invoiceId": {
+          "type": "string",
+          "description": "Unique transaction key"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Reference to the authenticated seeker"
+        },
+        "customerName": {
+          "type": "string",
+          "description": "Mortal name for shipping"
+        },
+        "phone": {
+          "type": "string",
+          "description": "Mortal contact number"
+        },
+        "address": {
+          "type": "string",
+          "description": "Target coordinate for carriage delivery"
+        },
+        "items": {
+          "type": "array",
+          "description": "List of silver reliquaries purchased"
+        },
+        "subtotal": {
+          "type": "integer"
+        },
+        "discount": {
+          "type": "integer"
+        },
+        "finalTotal": {
+          "type": "integer"
+        },
+        "paymentMethod": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["invoiceId", "userId", "customerName", "phone", "address", "items", "subtotal", "discount", "finalTotal", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Individual member file"
+    },
+    "/invoices/{invoiceId}": {
+      "schema": "Invoice",
+      "description": "Vault of downloadable transaction documents authenticated"
+    }
+  }
+}
